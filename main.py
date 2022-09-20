@@ -31,19 +31,25 @@ def next_card():
 
     window.after(100)
     audio_output = gTTS(text=current_card["French"], lang=language)
-    audio_output.save("english_word.mp3")
-    playsound.playsound("english_word.mp3", True)
-    os.remove("english_word.mp3")
+    audio_output.save("french_word.mp3")
+    playsound.playsound("french_word.mp3", True)
+    os.remove("french_word.mp3")
 
     flip_timer = window.after(3000, flip_card)
 
 
 # FLIP THE CARD------------------------------------
 def flip_card():
+    language = "en"
     # word = canvas.itemcget(word_text, "text")
     canvas.itemconfig(language_text, text="English", fill="white")
     canvas.itemconfig(word_text, text=current_card["English"], fill="white")
     canvas.itemconfig(card_image, image=bg_image)
+
+    audio_output = gTTS(text=current_card["English"], lang=language)
+    audio_output.save("english_word.mp3")
+    playsound.playsound("english_word.mp3", True)
+    os.remove("english_word.mp3")
 
 
 # UPDATE THE LIST AND CREATE A FILE----------------
